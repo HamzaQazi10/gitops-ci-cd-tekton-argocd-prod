@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-app-deployment
+  namespace: production
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: react-app
+  template:
+    metadata:
+      labels:
+        app: react-app
+    spec:
+      #nodeSelector:
+       # kubernetes.io/hostname: minikube-m03
+      containers:
+      - name: react-app-container
+        image: hamzaarshad10/frontend:latest
+        ports:
+        - containerPort: 3000  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-app-service
+  namespace: production
+spec:
+  selector:
+    app: react-app
+  ports:
+    - protocol: TCP
+      port: 3000  # The port your React app listens on inside the container
+      targetPort: 3000  # The port your React app listens on inside the pod
+  type: NodePort 
