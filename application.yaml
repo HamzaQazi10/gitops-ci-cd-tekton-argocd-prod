@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/HamzaQazi10/gitops-ci-cd-tekton-argocd.git
+    repoURL: https://github.com/HamzaQazi10/gitops-ci-cd-tekton-argocd-prod.git
     targetRevision: HEAD
     path: infrastructure
   destination: 
